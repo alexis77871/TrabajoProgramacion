@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ProyectoRH.Models.Cargos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="@Url.Action("Index","Home")">Inicio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index","About")">About<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Contact")">Contactos<span class="sr-only">(current)</span></a>
+
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<p></p>
+<p>
+    <a href="@Url.Action("Create","Cargos")" class="btn btn-primary">Registrar</a>
+</p>
+
+<div class="panel panel-default table-dark">
+    <div class="panel-heading table-dark">
+        <h3>Cargos</h3><form action="Index" method="post"></form><h3 class="text-right"></h3>
+        <form action="Index" method="post">
+            @Html.TextBox("SearchString")
+            <input type="submit" value="Search" />
+        </form>
+    </div>
+    </div>
+    <table class="table table-dark  table-bordered table-hover specialCollapse">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cargo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cargo)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CodigoCargo }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CodigoCargo }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CodigoCargo })
+                </td>
+            </tr>
+        }
+
+    </table>

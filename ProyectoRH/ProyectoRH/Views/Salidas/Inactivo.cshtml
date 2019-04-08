@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ProyectoRH.Models.Empleados>
+
+@{
+    ViewBag.Title = "Inactivo";
+}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="@Url.Action("Index","Home")">Inicio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index","About")">About<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Contact")">Contactos<span class="sr-only">(current)</span></a>
+
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<p></p>
+<a href="@Url.Action("Index","Salidas")" class="btn btn-primary">Volver</a>
+<p></p>
+
+
+<table class="table table-dark table-bordered table-hover specialCollapse">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Departamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargos.Cargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Departamentos.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cargos.Cargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estatus)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CodigoEmpleado }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CodigoEmpleado }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CodigoEmpleado })
+            </td>
+        </tr>
+    }
+
+</table>

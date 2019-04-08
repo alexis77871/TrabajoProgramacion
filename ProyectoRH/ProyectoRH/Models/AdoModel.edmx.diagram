@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9dd627377ab54a1cb34e3f64e76df3cc" Name="Diagram1">
+        <EntityTypeShape EntityType="recurosDBModel.Cargos" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="recurosDBModel.Departamentos" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="recurosDBModel.Empleados" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="recurosDBModel.Licencias" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="recurosDBModel.Nomina" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="recurosDBModel.Permisos" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="recurosDBModel.Salidas" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="recurosDBModel.Vacaciones" Width="1.5" PointX="5.25" PointY="14.5" IsExpanded="true" />
+        <AssociationConnector Association="recurosDBModel.FK_CodigoCargo" ManuallyRouted="false" />
+        <AssociationConnector Association="recurosDBModel.FK_CodigoDepartamento" ManuallyRouted="false" />
+        <AssociationConnector Association="recurosDBModel.FK_CodigoEmpleado" ManuallyRouted="false" />
+        <AssociationConnector Association="recurosDBModel.FK_CodigoEmpleado2" ManuallyRouted="false" />
+        <AssociationConnector Association="recurosDBModel.FK_CodigoEmpleado3" ManuallyRouted="false" />
+        <AssociationConnector Association="recurosDBModel.FK_CodigoEmpleado4" ManuallyRouted="false" />
+        <AssociationConnector Association="recurosDBModel.FK_CodigoEmpleado5" ManuallyRouted="false" />
+        <AssociationConnector Association="recurosDBModel.FK_CodigoEmpleado6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

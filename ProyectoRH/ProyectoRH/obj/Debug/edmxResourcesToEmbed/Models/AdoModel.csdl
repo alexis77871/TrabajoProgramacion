@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="recurosDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cargos">
+    <Key>
+      <PropertyRef Name="CodigoCargo" />
+    </Key>
+    <Property Name="CodigoCargo" Type="Int32" Nullable="false" />
+    <Property Name="Cargo" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_CodigoCargo" FromRole="Cargos" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="CodigoDepartamento" />
+    </Key>
+    <Property Name="CodigoDepartamento" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_CodigoDepartamento" FromRole="Departamentos" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="CodigoEmpleado" />
+    </Key>
+    <Property Name="CodigoEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Telefono" Type="Int32" />
+    <Property Name="Departamento" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Cargo" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+    <Property Name="Salario" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CodigoDepartamento" Type="Int32" Nullable="false" />
+    <Property Name="CodigoCargo" Type="Int32" Nullable="false" />
+    <Property Name="Estatus" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Cargos" Relationship="Self.FK_CodigoCargo" FromRole="Empleados" ToRole="Cargos" />
+    <NavigationProperty Name="Departamentos" Relationship="Self.FK_CodigoDepartamento" FromRole="Empleados" ToRole="Departamentos" />
+    <NavigationProperty Name="Nomina" Relationship="Self.FK_CodigoEmpleado" FromRole="Empleados" ToRole="Nomina" />
+    <NavigationProperty Name="Nomina1" Relationship="Self.FK_CodigoEmpleado2" FromRole="Empleados" ToRole="Nomina" />
+    <NavigationProperty Name="Salidas" Relationship="Self.FK_CodigoEmpleado3" FromRole="Empleados" ToRole="Salidas" />
+    <NavigationProperty Name="Vacaciones" Relationship="Self.FK_CodigoEmpleado4" FromRole="Empleados" ToRole="Vacaciones" />
+    <NavigationProperty Name="Permisos" Relationship="Self.FK_CodigoEmpleado5" FromRole="Empleados" ToRole="Permisos" />
+    <NavigationProperty Name="Licencias" Relationship="Self.FK_CodigoEmpleado6" FromRole="Empleados" ToRole="Licencias" />
+  </EntityType>
+  <EntityType Name="Licencias">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="Empleado" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="FechaInicial" Type="DateTime" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="3" />
+    <Property Name="Motivo" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Comentario" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_CodigoEmpleado6" FromRole="Licencias" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Nomina">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Empleado" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Año" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="Mes" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MontoTotal" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="CodigoEmpleado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_CodigoEmpleado" FromRole="Nomina" ToRole="Empleados" />
+    <NavigationProperty Name="Empleados1" Relationship="Self.FK_CodigoEmpleado2" FromRole="Nomina" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Permisos">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Empleado" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="CodigoEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="FechaInicial" Type="DateTime" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="3" />
+    <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_CodigoEmpleado5" FromRole="Permisos" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Salidas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="TipoSalida" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="Empleado" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Motivo" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="FechaSalida" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_CodigoEmpleado3" FromRole="Salidas" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Vacaciones">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CodigoEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="Empleado" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="FechaInicial" Type="DateTime" Precision="3" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="3" />
+    <Property Name="Comentario" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Año" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Empleados" Relationship="Self.FK_CodigoEmpleado4" FromRole="Vacaciones" ToRole="Empleados" />
+  </EntityType>
+  <Association Name="FK_CodigoCargo">
+    <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargos">
+        <PropertyRef Name="CodigoCargo" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="CodigoCargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodigoDepartamento">
+    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1" />
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="CodigoDepartamento" />
+      </Principal>
+      <Dependent Role="Empleados">
+        <PropertyRef Name="CodigoDepartamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodigoEmpleado">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Principal>
+      <Dependent Role="Nomina">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodigoEmpleado2">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="Nomina" Type="Self.Nomina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Principal>
+      <Dependent Role="Nomina">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodigoEmpleado3">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="Salidas" Type="Self.Salidas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Principal>
+      <Dependent Role="Salidas">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodigoEmpleado4">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="Vacaciones" Type="Self.Vacaciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Principal>
+      <Dependent Role="Vacaciones">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodigoEmpleado5">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Principal>
+      <Dependent Role="Permisos">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodigoEmpleado6">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="Licencias" Type="Self.Licencias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Principal>
+      <Dependent Role="Licencias">
+        <PropertyRef Name="CodigoEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="recurosDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cargos" EntityType="Self.Cargos" />
+    <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+    <EntitySet Name="Licencias" EntityType="Self.Licencias" />
+    <EntitySet Name="Nomina" EntityType="Self.Nomina" />
+    <EntitySet Name="Permisos" EntityType="Self.Permisos" />
+    <EntitySet Name="Salidas" EntityType="Self.Salidas" />
+    <EntitySet Name="Vacaciones" EntityType="Self.Vacaciones" />
+    <AssociationSet Name="FK_CodigoCargo" Association="Self.FK_CodigoCargo">
+      <End Role="Cargos" EntitySet="Cargos" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodigoDepartamento" Association="Self.FK_CodigoDepartamento">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Empleados" EntitySet="Empleados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodigoEmpleado" Association="Self.FK_CodigoEmpleado">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Nomina" EntitySet="Nomina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodigoEmpleado2" Association="Self.FK_CodigoEmpleado2">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Nomina" EntitySet="Nomina" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodigoEmpleado3" Association="Self.FK_CodigoEmpleado3">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Salidas" EntitySet="Salidas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodigoEmpleado4" Association="Self.FK_CodigoEmpleado4">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Vacaciones" EntitySet="Vacaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodigoEmpleado5" Association="Self.FK_CodigoEmpleado5">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Permisos" EntitySet="Permisos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodigoEmpleado6" Association="Self.FK_CodigoEmpleado6">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Licencias" EntitySet="Licencias" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,75 @@
+﻿@model ProyectoRH.Models.Salidas
+
+@{
+    ViewBag.Title = "Details";
+}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="@Url.Action("Index","Home")">Inicio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index","About")">About<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Contact")">Contactos<span class="sr-only">(current)</span></a>
+
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<h2>Details</h2>
+
+<div>
+    <h4>Salidas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoSalida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaSalida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleados.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleados.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
